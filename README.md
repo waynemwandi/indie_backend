@@ -1,4 +1,4 @@
-# Project Name
+# INDIE Daraja Integration
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -14,7 +14,7 @@
 
 ## Overview
 
-Briefly describe what the project does, its purpose, and the problem it solves.
+This is an implementation of the Safaricom Daraja C2B and STK integration with Django python.
 
 ## Features
 
@@ -26,7 +26,13 @@ Briefly describe what the project does, its purpose, and the problem it solves.
 ### Prerequisites
 
 - Set up virtual environment
-- Set up MySQL database
+
+```bash
+python -m venv venv
+```
+
+- Set up MySQL database:
+  Download and Configure [MySQL and MySQL Workbench](https://dev.mysql.com/downloads/file/?id=526408)
 
 ### Steps
 
@@ -62,6 +68,21 @@ Provide examples of how to use your project, including code snippets, screenshot
 # Run Migrations
 python manage.py makemigrations
 python manage.py migrate
+```
+
+Database Configurations in settings.py as;
+
+```python
+DATABASES = {
+   'default': {
+      'ENGINE': os.getenv('DATABASE_ENGINE', 'django.db.backends.mysql'),
+      'NAME': os.getenv('DATABASE_NAME'),
+      'USER': os.getenv('DATABASE_USER'),
+      'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+      'HOST': os.getenv('DATABASE_HOST'),
+      'PORT': os.getenv('DATABASE_PORT'),
+   }
+}
 ```
 
 ## Contributing
