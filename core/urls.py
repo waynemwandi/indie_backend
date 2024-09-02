@@ -19,6 +19,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("daraja/", include("daraja.urls")),  # API routes for daraja
-    path("", include("frontend.urls")),  # React routes
+    path("api/daraja/", include("daraja.urls")),  # API routes for daraja
 ]
