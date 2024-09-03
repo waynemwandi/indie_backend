@@ -1,12 +1,16 @@
-// src/components/TestAPI.js
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function TestAPI() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000/test-api/")
-      .then((response) => response.json())
+    fetch("/api/daraja/test-api/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => setData(data))
       .catch((error) => console.error("Error:", error));
   }, []);

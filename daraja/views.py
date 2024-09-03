@@ -18,6 +18,16 @@ def test_api(request):
     return JsonResponse(data)
 
 
+def get_payments(request):
+    if request.method == "GET":
+        transactions = Transaction.objects.all().values(
+            "id", "trans_id", "trans_amount", "msisdn", "trans_time"
+        )
+        return JsonResponse(list(transactions), safe=False)
+    else:
+        return JsonResponse({"error": "GET request required"}, status=400)
+
+
 @csrf_exempt
 def c2b_confirmation(request):
     if request.method == "POST":
