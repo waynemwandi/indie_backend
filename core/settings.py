@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.getenv("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(" ")
 
@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "daraja",
-    "frontend",
     "corsheaders",
 ]
 
@@ -133,3 +132,6 @@ CORS_ALLOW_METHODS = ["*"]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Allow the React app on this port
 ]
+
+SAFARICOM_CONSUMER_KEY = os.getenv("SAFARICOM_CONSUMER_KEY")
+SAFARICOM_CONSUMER_SECRET = os.getenv("SAFARICOM_CONSUMER_SECRET")
